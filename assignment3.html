@@ -1,19 +1,67 @@
-<!-- Name: Md Kabirul Hassan
-Roll: 12100119058
-Stream: CSE(B) -->
-
 <html>
+
 <head>
   <title>Tour Registration Form</title>
-  <link rel="stylesheet" type="text/css" href="assignment3.css">
+  <style>
+    table {
+      margin: 0 auto;
+    }
+
+    input[type=text],
+    input[type=date],
+    input[type="number"],
+    select {
+      border: 1px solid skyblue;
+      border-radius: 5px;
+      padding: 6px 6px;
+      margin: 5px 0;
+    }
+
+    .btn {
+      color: white;
+      background-color: #7190be;
+      border-radius: 5px;
+      margin: 10px;
+      height: 25px;
+      width: 70px;
+      font-weight: bold;
+    }
+
+    .btn:hover {
+      background-color: skyblue;
+      cursor: pointer;
+    }
+
+    .error-text {
+      background-color: #EEDDDD;
+    }
+
+    .headerCell {
+      font-family: calibri;
+      font-size: large;
+      color: black;
+      padding: 10px;
+      border: 2px solid #934422;
+      border-radius: 5px;
+    }
+
+    .commonCell {
+      font-family: calibri;
+      font-size: medium;
+      color: black;
+      padding: 5px;
+      border: 1px solid skyblue;
+      border-radius: 5px;
+    }
+  </style>
 </head>
 
 <body onload="getId()">
   <center>
     <form id="frmCourseReg" name="frmCourseReg">
-      <table id="input-table">
+      <table style="box-shadow: 2px 2px 15px 1px black;padding: 30px;">
         <tr>
-          <td align="center" colspan="6" class="heading">
+          <td align="center" colspan="3" class="heading">
             <h3>
               Tour Registration Form
             </h3>
@@ -21,7 +69,7 @@ Stream: CSE(B) -->
         </tr>
         <tr>
           <td align="right">TOUR_ID:</td>
-          <td colspan="2"><input readonly id="txtTourID" name="txtTourID" type="text" maxlength="6" /></td>
+          <td colspan="2"><input readonly id="txtTourID" name="txtTourID" type="text" maxlength="3" /></td>
         </tr>
         <tr>
           <td align="right">TOUR_NAME:</td>
@@ -36,7 +84,7 @@ Stream: CSE(B) -->
         <tr>
           <td align="right">DESTINATIONS:</td>
           <td>
-            <input id="txtDestination" name="txtDestination" onblur="checkDest(this)" type="text" maxlength="250"
+            <input id="txtDestName" name="txtDestName" onblur="checkDest(this)" type="text" maxlength="250"
               placeholder="" />
           </td>
           <td>
@@ -82,7 +130,6 @@ Stream: CSE(B) -->
   <table>
     <div id="divShowCourses"></div>
   </table>
-  <script src="assignment3.js"></script>
 </body>
 
 </html>
@@ -109,7 +156,7 @@ Stream: CSE(B) -->
         flagName = false;
       } else {
         flagName = true;
-        document.getElementById("divTourName").innerHTML = "<img src=images/tick.jpg>";
+        document.getElementById("divTourName").innerHTML = "<img src=images/tick_1.jpg>";
         document.getElementById("txtTourName").className = "";
       }
     }
@@ -129,7 +176,7 @@ Stream: CSE(B) -->
         flagDest = false;
       } else {
         flagDest = true;
-        document.getElementById("divDestName").innerHTML = "<img src=images/tick.jpg>";
+        document.getElementById("divDestName").innerHTML = "<img src=images/tick_1.jpg>";
         document.getElementById("txtDestName").className = "";
       }
     }
@@ -151,7 +198,7 @@ Stream: CSE(B) -->
         flagStartDate = false;
       } else {
         flagStartDate = true;
-        document.getElementById("divStartDate").innerHTML = "<img src=images/tick.jpg>";
+        document.getElementById("divStartDate").innerHTML = "<img src=images/tick_1.jpg>";
         document.getElementById("startDate").className = "";
       }
     }
@@ -178,7 +225,7 @@ Stream: CSE(B) -->
         flagEndDate = false;
       } else {
         flagEndDate = true;
-        document.getElementById("divEndDate").innerHTML = "<img src=images/tick.jpg>";
+        document.getElementById("divEndDate").innerHTML = "<img src=images/tick_1.jpg>";
         document.getElementById("endDate").className = "";
       }
     }
@@ -196,7 +243,7 @@ Stream: CSE(B) -->
         flagPrice = false;
       } else {
         flagPrice = true;
-        document.getElementById("divPrice").innerHTML = "<img src=images/tick.jpg>";
+        document.getElementById("divPrice").innerHTML = "<img src=images/tick_1.jpg>";
         document.getElementById("txtPrice").className = "";
       }
     }
