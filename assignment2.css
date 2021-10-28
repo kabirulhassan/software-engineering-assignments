@@ -1,0 +1,51 @@
+select, input{
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px;
+}
+form{
+    align-items: center;
+    text-align: center;
+}
+table{
+    margin: 0 auto;
+}
+.heading{
+    font-size: 30px;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+.btn{
+    color: white;
+    background-color: #6779A0;
+    box-shadow: 1px  1px 5px 1px black;
+    margin: 10px;
+    padding: 5px 10px;
+    width: 80px;
+    font-weight: bold;
+}
+.btn:hover{
+    background-color: blue;
+    cursor: pointer;
+}
+.error-text{
+    background-color: #EEDDDD;
+}
+
+.headerCell{
+    font-family: calibri;
+    font-size: large;
+    color: #8F3925;
+    padding: 10px;
+    border: 2px solid #934422;
+    background: #EFBADA;
+    border-radius: 5px;
+}
+.commonCell{
+    font-family: calibri;
+    font-size: medium;
+    color: #122354;
+    padding: 5px;
+    border: 1px solid #934422;
+    border-radius: 5px;
+}

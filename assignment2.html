@@ -1,0 +1,153 @@
+<!-- 
+Name: Md Kabirul Hassan
+Stream: CSE(B)
+Roll: 12100119058 -->
+
+<html>
+  <head>
+    <title>Assignment 2</title>
+    <link rel="stylesheet" href="assignment2.css">
+  </head>
+  <body onload="getId()">
+    <center>
+    <form id="frmCourseReg" name="frmCourseReg">
+      <table style="box-shadow: 2px 2px 15px 1px black;padding: 30px;">
+        <tr>
+          <td align="center" colspan="3" class="heading">
+            Course Registration
+          </td>
+        </tr>
+        <tr>
+          <td align="right">Course ID:</td>
+          <td colspan="2"><input readonly id="txtCourseID" name= "txtCourseID" type="text" maxlength="3" /></td>
+        </tr>
+        <tr>
+          <td align="right">Course Name:</td>
+          <td>
+            <input id="txtCourseName" name= "txtCourseName" onblur="checkName(this)" size="50" type="text" maxlength="50" placeholder="E.g. Computer Science and Engineering"/>
+          </td>
+          <td>
+            <div id="divCourseName"></div>
+          </td>
+        </tr>
+        <tr>
+          <td align="right">Course Type:</td>
+          <td colspan="2">
+            <select id="optCourseType" name= "optCourseType">
+              <option value="">Select Course Type</option>
+              <option value="B.TECH">B.TECH</option>
+              <option value="M.TECH">M.TECH</option>
+              <option value="BACHELORS">BACHELORS</option>
+              <option value="DIPLOMA">DIPLOMA</option>
+              <option value="MASTERS">MASTERS</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td align="right">Duration:</td>
+          <td colspan="2">
+            <select id="optCourseDuration" name= "optCourseDuration">
+              <option value="">Select Duration</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td align="center" colspan="3">
+            <input class="btn" onclick="cheeckAllInput()" type="button" value="Add"/>
+            <input class="btn" onblur="getId()" type="reset" value="Cancel"/>
+          </td>
+        </tr>
+      </table>
+    </form>
+    </center>
+    <table>
+      <div id="divShowCourses"></div>
+    </table>
+  </body>
+</html>
+<script language="JavaScript" type="text/javascript">
+  var count = 1;
+  var flagName = false;
+
+
+  function checkName(htmlObj){
+    var strCName = htmlObj.value;
+    if(strCName==""){
+      flagName = false;
+      document.getElementById("divCourseName").innerHTML = "Please Enter Course Name.";
+    }else{
+      flagName=false;
+      var valid  = /^[a-zA-Z ]+$/;
+      if(!strCName.match(valid)){
+        document.getElementById("divCourseName").innerHTML = "Invalid course name. Only alphabets and space allowed.";
+        document.getElementById("txtCourseName").className = "error-text";
+        flagName=false;
+      }else{
+        flagName = true;
+        document.getElementById("divCourseName").innerHTML = "<img src=images/tick.jpg>";
+        document.getElementById("txtCourseName").className = "";
+      }
+    }
+  }
+
+  function getId(){
+    var cid = "C"+count;
+    var numzeroes = 3 - cid.length;
+    cid = "C";
+    for(var i= 0;i<numzeroes;i++)
+    {
+      cid+="0";
+    }
+    cid+=count;
+    document.getElementById("txtCourseID").value = cid;   
+    document.getElementById("divCourseName").innerHTML = "";
+    document.getElementById("txtCourseName").className = ""; 
+  }
+  var userRow = "";
+  function cheeckAllInput(){
+    if(document.getElementById("txtCourseID").value!=""){
+      if(document.getElementById("txtCourseName").value!="" && flagName!=false){
+        if(document.getElementById("optCourseDuration").value!=""){
+          if(document.getElementById("optCourseType").value!=""){
+            var headerContent = "";
+            headerContent = "<table border=0><tr>";
+            headerContent+="<td align=center valign=center class=headerCell> Sl.No.</td>";
+            headerContent+="<td align=center valign=center class=headerCell> Course ID</td>";
+            headerContent+="<td align=center valign=center class=headerCell> Course Name</td>";
+            headerContent+="<td align=center valign=center class=headerCell> Duration</td>";
+            headerContent+="<td align=center valign=center class=headerCell> Course Type</td>";
+            headerContent+="</tr>";
+            var cid = document.getElementById("txtCourseID").value;
+            var cname = document.getElementById("txtCourseName").value;
+            var duration = document.getElementById("optCourseDuration").value;
+            var ctype = document.getElementById("optCourseType").value;
+            userRow+="<tr>";
+            userRow+="<td align=center valign=center class=commonCell>"+count+"</td>";
+            userRow+="<td align=center valign=center class=commonCell>"+cid+"</td>";
+            userRow+="<td align=center valign=center class=commonCell>"+cname+"</td>";
+            userRow+="<td align=center valign=center class=commonCell>"+duration+"</td>";
+            userRow+="<td align=center valign=center class=commonCell>"+ctype+"</td>";
+            userRow+="</tr>";
+            var content = headerContent+userRow+"</table>";
+            document.getElementById("divShowCourses").innerHTML = content;
+            alert("Course succesfully added!");
+            document.getElementById("frmCourseReg").reset();
+            count++;
+            getId();
+          }else{
+            alert("Please select the course type.");
+          }
+        }else{
+            alert("Please select the course duration.");
+          }
+      }else{
+            alert("Please enter valid course name.");
+          }
+    }else{
+      alert("Please reload the page. Error on loading.");
+    }
+  }
+</script>
