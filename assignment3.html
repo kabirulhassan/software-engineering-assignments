@@ -1,67 +1,19 @@
-<html>
+<!-- Name: Md Kabirul Hassan
+Roll: 12100119058
+Stream: CSE(B) -->
 
+<html>
 <head>
   <title>Tour Registration Form</title>
-  <style>
-    table {
-      margin: 0 auto;
-    }
-
-    input[type=text],
-    input[type=date],
-    input[type="number"],
-    select {
-      border: 1px solid skyblue;
-      border-radius: 5px;
-      padding: 6px 6px;
-      margin: 5px 0;
-    }
-
-    .btn {
-      color: white;
-      background-color: #7190be;
-      border-radius: 5px;
-      margin: 10px;
-      height: 25px;
-      width: 70px;
-      font-weight: bold;
-    }
-
-    .btn:hover {
-      background-color: skyblue;
-      cursor: pointer;
-    }
-
-    .error-text {
-      background-color: #EEDDDD;
-    }
-
-    .headerCell {
-      font-family: calibri;
-      font-size: large;
-      color: black;
-      padding: 10px;
-      border: 2px solid #934422;
-      border-radius: 5px;
-    }
-
-    .commonCell {
-      font-family: calibri;
-      font-size: medium;
-      color: black;
-      padding: 5px;
-      border: 1px solid skyblue;
-      border-radius: 5px;
-    }
-  </style>
+  <link rel="stylesheet" type="text/css" href="assignment3.css">
 </head>
 
 <body onload="getId()">
   <center>
     <form id="frmCourseReg" name="frmCourseReg">
-      <table style="box-shadow: 2px 2px 15px 1px black;padding: 30px;">
+      <table id="input-table">
         <tr>
-          <td align="center" colspan="3" class="heading">
+          <td align="center" colspan="6" class="heading">
             <h3>
               Tour Registration Form
             </h3>
@@ -69,7 +21,7 @@
         </tr>
         <tr>
           <td align="right">TOUR_ID:</td>
-          <td colspan="2"><input readonly id="txtTourID" name="txtTourID" type="text" maxlength="3" /></td>
+          <td colspan="2"><input readonly id="txtTourID" name="txtTourID" type="text" maxlength="6" /></td>
         </tr>
         <tr>
           <td align="right">TOUR_NAME:</td>
@@ -84,7 +36,7 @@
         <tr>
           <td align="right">DESTINATIONS:</td>
           <td>
-            <input id="txtDestName" name="txtDestName" onblur="checkDest(this)" type="text" maxlength="250"
+            <input id="txtDestination" name="txtDestination" onblur="checkDest(this)" type="text" maxlength="250"
               placeholder="" />
           </td>
           <td>
@@ -156,7 +108,7 @@
         flagName = false;
       } else {
         flagName = true;
-        document.getElementById("divTourName").innerHTML = "<img src=images/tick_1.jpg>";
+        document.getElementById("divTourName").innerHTML = "<img src=images/tick.jpg>";
         document.getElementById("txtTourName").className = "";
       }
     }
@@ -172,12 +124,12 @@
       var valid = /^[a-zA-Z, ]+$/;
       if (!strDest.match(valid)) {
         document.getElementById("divDestName").innerHTML = "Invalid Destination. Only alphabets, comma(',') and space allowed.";
-        document.getElementById("txtDestName").className = "error-text";
+        document.getElementById("txtDestination").className = "error-text";
         flagDest = false;
       } else {
         flagDest = true;
-        document.getElementById("divDestName").innerHTML = "<img src=images/tick_1.jpg>";
-        document.getElementById("txtDestName").className = "";
+        document.getElementById("divDestName").innerHTML = "<img src=images/tick.jpg>";
+        document.getElementById("txtDestination").className = "";
       }
     }
   }
@@ -189,16 +141,16 @@
     console.log(strStDate);
     if (strStDate == "") {
       flagStartDate = false;
-      document.getElementById("divStartDate").innerHTML = "Please enter date";
+      document.getElementById("divStartDate").innerHTML = "Please enter start date";
     } else {
       flagStartDate = false;
       if (stdate < today) {
-        document.getElementById("divStartDate").innerHTML = "Invalid Date";
+        document.getElementById("divStartDate").innerHTML = "Invalid Date.Please enter valid date. Minimum date is today.";
         document.getElementById("startDate").className = "error-text";
         flagStartDate = false;
       } else {
         flagStartDate = true;
-        document.getElementById("divStartDate").innerHTML = "<img src=images/tick_1.jpg>";
+        document.getElementById("divStartDate").innerHTML = "<img src=images/tick.jpg>";
         document.getElementById("startDate").className = "";
       }
     }
@@ -216,16 +168,16 @@
     var maxDate = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate() + 90);
     if (strEndDate == "") {
       flagEndDate = false;
-      document.getElementById("divEndDate").innerHTML = "Please enter date";
+      document.getElementById("divEndDate").innerHTML = "Please enter end date";
     } else {
       flagEndDate = false;
       if (!(minDate <= endDate && endDate <= maxDate)) {
-        document.getElementById("divEndDate").innerHTML = "Invalid Date";
+        document.getElementById("divEndDate").innerHTML = "Invalid Date.Please enter valid date. Minimum date is one day after start date and maximum 3 months after start date.";
         document.getElementById("endDate").className = "error-text";
         flagEndDate = false;
       } else {
         flagEndDate = true;
-        document.getElementById("divEndDate").innerHTML = "<img src=images/tick_1.jpg>";
+        document.getElementById("divEndDate").innerHTML = "<img src=images/tick.jpg>";
         document.getElementById("endDate").className = "";
       }
     }
@@ -243,7 +195,7 @@
         flagPrice = false;
       } else {
         flagPrice = true;
-        document.getElementById("divPrice").innerHTML = "<img src=images/tick_1.jpg>";
+        document.getElementById("divPrice").innerHTML = "<img src=images/tick.jpg>";
         document.getElementById("txtPrice").className = "";
       }
     }
@@ -260,7 +212,7 @@
     document.getElementById("divTourName").innerHTML = "";
     document.getElementById("txtTourName").className = "";
     document.getElementById("divDestName").innerHTML = "";
-    document.getElementById("txtDestName").className = "";
+    document.getElementById("txtDestination").className = "";
     document.getElementById("divStartDate").innerHTML = "";
     document.getElementById("startDate").className = "";
     document.getElementById("divEndDate").innerHTML = "";
@@ -272,7 +224,7 @@
   function cheeckAllInput() {
     if (document.getElementById("txtTourID").value != "") {
       if (document.getElementById("txtTourName").value != "" && flagName != false) {
-        if (document.getElementById("txtDestName").value != "" && flagDest != false) {
+        if (document.getElementById("txtDestination").value != "" && flagDest != false) {
           if (document.getElementById("startDate").value != "" && flagStartDate != false) {
             if (document.getElementById("endDate").value != "" && flagEndDate != false) {
               if (document.getElementById("txtPrice").value != "" && flagPrice != false) {
@@ -288,7 +240,7 @@
                 headerContent += "</tr>";
                 var tid = document.getElementById("txtTourID").value;
                 var tourName = document.getElementById("txtTourName").value;
-                var destination = document.getElementById("txtDestName").value;
+                var destination = document.getElementById("txtDestination").value;
                 var startDate = document.getElementById("startDate").value;
                 var endDate = document.getElementById("endDate").value;
                 var price = document.getElementById("txtPrice").value;

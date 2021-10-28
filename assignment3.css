@@ -1,0 +1,55 @@
+table {
+  margin: 0 auto;
+}
+#input-table {
+  box-shadow: 2px 2px 15px 1px black;
+  padding: 30px;
+}
+input[type="text"],
+input[type="date"],
+input[type="number"],
+select {
+  border: 1px solid skyblue;
+  border-radius: 5px;
+  padding: 6px 6px;
+  margin: 5px 0;
+}
+
+.btn {
+  color: white;
+  background-color: #6779a0;
+  box-shadow: 1px 1px 5px 1px black;
+  margin: 10px;
+  padding: 5px 10px;
+  width: 80px;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  color: blue;
+  background-color: white;
+  cursor: pointer;
+}
+
+.error-text {
+  background-color: #eedddd;
+}
+
+.headerCell {
+  font-family: calibri;
+  font-size: large;
+  color: black;
+  padding: 10px;
+  border: 2px solid #934422;
+  border-radius: 5px;
+}
+
+.commonCell {
+  font-family: calibri;
+  font-size: medium;
+  color: black;
+  padding: 5px;
+  border: 1px solid skyblue;
+  border-radius: 5px;
+}
