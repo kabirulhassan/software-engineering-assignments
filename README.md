@@ -1,3 +1,3 @@
-# software-enginnering-assignments
+# software-enginneering-assignments
 
-All the software enginnering assignments
+All the software engineering assignments
