@@ -46,7 +46,7 @@ Stream: CSE(B) -->
         <tr>
           <td align="right">START_DATE: </td>
           <td>
-            <input type="date" name="startDate" id="startDate" onblur="checkStartDate(),activateEndDate()">
+  <input type="date" name="startDate" id="startDate" onblur="checkStartDate(),validateEndDate()"  onclick="validateStartDate(),activateEndDate()" min="2021-10-03">
           </td>
           <td>
             <div id="divStartDate"></div>

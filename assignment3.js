@@ -45,12 +45,46 @@ function checkDest(htmlObj) {
     }
   }
 }
-
+function validateStartDate(){
+  var strStDate = document.getElementById("startDate").value;
+  var stdate = new Date(strStDate);
+  var minDate = new Date();
+  minDate.setHours(0, 0, 0, 0);
+  console.log(typeof minDate);
+  console.log(typeof stdate);
+  var date = minDate.getDate().toString();
+  var month = (minDate.getMonth()+1).toString();
+  date.length == 1 ? date = "0" + date : date;
+  month.length == 1 ? month = "0" + month : month;
+  var strminDate = minDate.getFullYear() + "-" + month + "-" + date;
+  console.log(minDate);
+  document.getElementById("startDate").min = strminDate;
+}
+function validateEndDate(){
+  var stdate  = new Date(document.getElementById("startDate").value);
+  var minDate = stdate;
+  minDate.setDate(stdate.getDate() + 1);
+  var date = (minDate.getDate()).toString();
+  var month = (minDate.getMonth()+1).toString();
+  date.length == 1 ? date = "0" + date : date;
+  month.length == 1 ? month = "0" + month : month;
+  var strDate = stdate.getFullYear() + "-" + month + "-" + date;
+  document.getElementById("endDate").min = strDate;
+  var maxDate = stdate;
+  maxDate.setMonth(stdate.getMonth() + 3);
+  date = (maxDate.getDate()).toString();
+  month = (maxDate.getMonth()+1).toString();
+  date.length == 1 ? date = "0" + date : date;
+  month.length == 1 ? month = "0" + month : month;
+  strDate = maxDate.getFullYear() + "-" + month + "-" + date;
+  console.log(maxDate);
+  document.getElementById("endDate").max = strDate;
+}
 function checkStartDate() {
   var strStDate = document.getElementById("startDate").value;
-  var stdate = new Date(strStDate).setHours(0, 0, 0, 0);
-  var today = new Date().setHours(0, 0, 0, 0);
-  console.log(strStDate);
+  var stdate = new Date(strStDate);
+  var today = new Date();
+  today.setHours(0, 0, 0, 0);
   if (strStDate == "") {
     flagStartDate = false;
     document.getElementById("divStartDate").innerHTML = "Please enter start date";
@@ -68,8 +102,7 @@ function checkStartDate() {
   }
 }
 function activateEndDate() {
-  if (flagStartDate == true)
-    document.getElementById("endDate").disabled = false;
+  document.getElementById("endDate").disabled = false;
 }
 function checkEndDate() {
   var strStDate = document.getElementById("startDate").value;
