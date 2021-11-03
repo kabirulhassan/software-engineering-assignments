@@ -200,9 +200,9 @@ function cheeckAllInput() {
               userRow += "<td align=center valign=center class=commonCell>" + price + "</td>";
               userRow += "</tr>";
               var content = headerContent + userRow + "</table>";
-              document.getElementById("divShowCourses").innerHTML = content;
+              document.getElementById("divShowTours").innerHTML = content;
               alert("Course succesfully added!");
-              document.getElementById("frmCourseReg").reset();
+              document.getElementById("formTourReg").reset();
               count++;
               getId();
             } else {
